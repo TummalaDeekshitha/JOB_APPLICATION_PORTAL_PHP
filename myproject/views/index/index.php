@@ -164,7 +164,7 @@ SignIn
                       font-size: 16px;
                       margin: 4px 2px;
                       cursor: pointer;"
-                  href="/myproject/signinform/signinform">
+                  href="/myproject/signinform">
                   SignIn
                                   </a>
                     </div>
@@ -221,7 +221,7 @@ SignUp
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;"
-   href="/myproject/signinform/signinform" 
+   href="/myproject/signinform" 
 >
 SignIn
                 </a>
@@ -365,14 +365,7 @@ SignIn
         </h2>
         <p>
           Explore a diverse array of job opportunities tailored to your skills and preferences on our application. Easily apply for your dream job with a seamless application process, personalized to each job listing. Our platform offers a user-friendly resume creation tool, empowering you to showcase your talents effectively. Elevate your career journey with tailored job recommendations and simplified application steps. Join us and take the next step towards your professional success
-        </p><a href="/myproject/graphs/showCompanyWiseDistribution">
-          Show Company-wise Distribution
-         
-        </a>
-        <a href="/myproject/graphs/ApplicationTrends">
-        Apllications_Trends
-         
-        </a>
+       
       </div>
     </div>
   </section>

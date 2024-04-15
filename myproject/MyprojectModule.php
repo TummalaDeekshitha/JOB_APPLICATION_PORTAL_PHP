@@ -6,7 +6,9 @@ class MyprojectModule extends CWebModule{
             'application.modules.myproject.components.*',
             'application.modules.myproject.components.helpers.*',
             'ext.YiiMongoDbSuite.*',
-            'application.modules.myproject.modules.*'
+            'application.modules.myproject.modules.*',
+            'application.filters.*',
+            'application.modules.myproject.controllers.filters.*'
         ));
         $this->defaultController = 'index';
     }

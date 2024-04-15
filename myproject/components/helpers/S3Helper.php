@@ -1,6 +1,6 @@
 <?php
 use Aws\S3\S3Client;
- 
+
 class S3Helper{
     public function __construct()
     {
@@ -20,7 +20,7 @@ class S3Helper{
         $fileNameCmps = explode(".", $tempFilePath);
         $fileExtension = strtolower(end($fileNameCmps));
         $newFileName = md5(time() . $tempFilePath) . '.' . $fileExtension;
-        
+
         $params = [
             'Bucket' => $_ENV['AWS_BUCKET_NAME'],
             'Key'    => $newFileName,
@@ -33,5 +33,5 @@ class S3Helper{
         $url = $this->objAwsS3Client->getObjectUrl($_ENV['AWS_BUCKET_NAME'], $newFileName);
         return $url;
     }
-    
+
 }

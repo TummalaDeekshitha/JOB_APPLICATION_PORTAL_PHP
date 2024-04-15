@@ -15,7 +15,9 @@ class ApplicationCollection extends EMongoDocument {
     public function getCollectionName() {
         return 'applicationcollection'; // Replace with your MongoDB collection name
     }
-
+    public function getMongoDBComponent(){
+        return Yii::app()->mongodbMp;
+    }
     public function rules()
 {
     return array(
@@ -30,7 +32,7 @@ class ApplicationCollection extends EMongoDocument {
 
 public function MyCustomValidator($attribute,$params)
 {
-    $y=Signupcolls::model()->findByAttributes(["email"=>$this->email]);
+    $y=Signupcolls::model()->findByAttributes(["email"=>strtolower($this->email)]);
     if(!$y)
     {
         $this->addError('email', "The email you provided is not registered. Please ensure you have entered the correct email address ");
@@ -42,18 +44,17 @@ public function MyCustomValidator($attribute,$params)
     public function beforeSave()
     {
         
-        try{
+        
             if ($this->isNewRecord) {
                
                 $model=Jobs::model()->findByAttributes(["_id"=> new \MongoDB\BSON\ObjectId($this->jobid) ]);
+                $this->status="pending";
                 $this->category=$model->category;
                 $this->jobTitle=$model->jobTitle;
                 $this->companyName=$model->companyName;
+                $this->email=strtolower($this->email);
             }
-        }
-        catch(Exception $e){
-            return false;
-        }
+
         return true;
 
     }

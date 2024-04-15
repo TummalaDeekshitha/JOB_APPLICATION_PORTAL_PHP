@@ -136,7 +136,7 @@
                         <ul class="navbar-nav">
                            
                             <li class="nav-item active">
-                                <a class="nav-link about-btn" href="/about">About</a>
+                                <a class="nav-link about-btn" href="/myproject/about">About</a>
                             </li>
                             <li class="nav-item active">
                             <a class="nav-link chat-btn" href="/myproject/chatgpt">chatbot
