@@ -17,8 +17,14 @@
             /* Set background color */
         }
 
+        .bg-orange-custom {
+    background-color: #ff8300 !important; /* Orange background color */
+}
+
+
         nav {
-            background-color: #333;
+            background-color: #333 !important;
+            /* background-color: #ff8300; */
             height: 70px;
             width: 100%;
             display: flex;
@@ -55,7 +61,10 @@
         .nav-item.active a::after {
             width: 100%;
         }
-
+        .navbar-nav .nav-link {
+        color: black !important; /* Set the color of navbar links to black */
+    }
+    
         @media (min-width: 992px) {
             .nav-item.active a::after {
                 width: 100%;
@@ -73,26 +82,26 @@
 
         <div id="mainmenu">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-orange-custom fixed-top">
+
                 <div class="container">
-                    <a class="navbar-brand" href="#">Home</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="home">Home</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto">
+                    <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My Applicants</a>
+                                <a class="nav-link" href="Myapplicants">My Applicants</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My Posts</a>
+                                <a class="nav-link" href="posts">My Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Logout</a>
+                                <a class="nav-link" href="Logout">Logout</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Add Job</a>
+                                <a class="nav-link" href="jobs">Add Job</a>
                             </li>
                         </ul>
                     </div>
@@ -103,10 +112,12 @@
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </div><!-- mainmenu -->
-        <?php if (isset($this->breadcrumbs)): ?>
-            <?php $this->widget('zii.widgets.CBreadcrumbs', array(
-                'links' => $this->breadcrumbs,
-            )
+        <?php if (isset($this->breadcrumbs)) : ?>
+            <?php $this->widget(
+                'zii.widgets.CBreadcrumbs',
+                array(
+                    'links' => $this->breadcrumbs,
+                )
             ); ?><!-- breadcrumbs -->
         <?php endif ?>
 
@@ -121,57 +132,3 @@
 </body>
 
 </html>
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="home">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="Myapplicants">My Applicants</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="posts">My Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Logout">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="jobs">Add Job</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav> -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-    <a class="navbar-brand" href="home">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="Myapplicants">My Applicants</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="posts">My Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Logout">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="jobs">Add Job</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>

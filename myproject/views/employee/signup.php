@@ -19,6 +19,7 @@
             align-items: center;
             height: 100vh;
             background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+            overflow-y: hidden;
         }
 
         .image-container {
@@ -54,6 +55,7 @@
             background: #fff;
             max-width: 800px;
             padding: 20px;
+            /* max-height: 9; */
             /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
             text-align: center;
         }
@@ -112,6 +114,28 @@
             color: #dc3545;
             margin-bottom: 10px;
         }
+        .container {
+    background: #fff;
+    max-width: 90%; /* Changed from 800px to 90% */
+    padding: 20px 20px;
+    max-height: 85%;
+    text-align: center;
+    border-radius: 5%;
+    display: flex; /* Added */
+    flex-direction: column; /* Added */
+    justify-content: center; /* Added */
+    align-items: center; /* Added */
+}
+
+.image-container {
+    flex: 1; /* Removed height and width properties */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
     </style>
 </head>
 

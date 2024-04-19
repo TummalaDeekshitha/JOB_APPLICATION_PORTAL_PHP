@@ -1,4 +1,4 @@
-w<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -40,7 +40,8 @@ w<!DOCTYPE html>
                         <div class="row">
                             <!-- Profile Image Column -->
                             <div class="col-md-4">
-                                <img src="<?php echo $data['profile']; ?>" alt="Image" class="img-fluid mb-3">
+                                <br>
+                                <img src="<?php echo $data['profile']; ?>" alt="Image" class="img-fluid mb-3 " style="max-width:150px;max :height 500px">
                             </div>
                             <!-- User Data Column -->
                             <div class="col-md-8">
@@ -60,7 +61,7 @@ w<!DOCTYPE html>
                                     <?php echo $data['employeeId']; ?>
                                 </p>
                                 <p><strong>Registered Time:</strong>
-                                    <?php echo date('Y-m-d H:i:s', strtotime($data['registeredTime'])); ?>
+                                    <span class="last-date"><?= date('Y-m-d H:i:s', $data["registeredTime"]->sec) ?></span>
                                 </p>
                             </div>
                         </div>

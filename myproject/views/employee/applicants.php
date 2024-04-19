@@ -16,6 +16,7 @@
         .container {
             margin-top: 30px;
         }
+        
 
         .card {
             display: flex;
@@ -70,6 +71,22 @@
         .search-form {
             margin-bottom: 10px; /* Adjust as needed */
         }
+
+        .modal-dialog {
+    max-width: 60%;
+    height: 80vh; /* Set height to 70% of viewport height */
+}
+
+.modal-content {
+    height: 100%; /* Set height to 100% of modal */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.modal-body {
+    height: 100%; /* Set height to 100% of modal body */
+    overflow-y: hidden; /* Hide vertical overflow */
+}
+
     </style>
 </head>
 
@@ -115,14 +132,14 @@
                         onclick="openResumeModal('<?php echo $application['resume']; ?>')">Open Resume</a>
                     <form action="<?php echo $this->createUrl('/myproject/jobs/UpdateApplication') ?>"
                         method="post">
-                        <input type="hidden" name="status" value="approved">
+                        <input type="hidden" name="uStatus" value="approved">
                         <input type="hidden" name="id" value="<?php echo $application["_id"]; ?>">
                         <input type="hidden" name="jid" value="<?php echo $application["jobid"]; ?>">
                         <button type="submit" class="btn btn-success">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspApprove&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                     </form>
                     <form action="<?php echo $this->createUrl('/myproject/jobs/UpdateApplication') ?>"
                         method="post">
-                        <input type="hidden" name="status" value="rejected">
+                        <input type="hidden" name="uStatus" value="rejected">
                         <input type="hidden" name="id" value="<?php echo $application["_id"]; ?>">
                         <input type="hidden" name="jid" value="<?php echo $application["jobid"]; ?>">
                         <button type="submit" class="btn btn-danger">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReject&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>

@@ -21,7 +21,9 @@ class Mailhelper extends CComponent
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587;
             $mail->setFrom("20311A1206@sreenidhi.edu.in");
+            // $mail->addAddress($to);
             $mail->addAddress($to);
+
             $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
             $mail->Body = $body;

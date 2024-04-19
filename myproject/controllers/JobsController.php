@@ -31,11 +31,7 @@ class JobsController extends Controller
         }
         return true;
     }
-    // public function afterAction($action){
-    //     var_dump($action);
-    //     return true;
-    // }
-
+    
     public function actionIndex()
     {
         $this->redirect(array("/myproject/employee/home"));

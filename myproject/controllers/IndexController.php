@@ -26,7 +26,7 @@ class IndexController extends Controller
             }
         }
         if ((Yii::app()->session["empInfo"]["token"])) {
-            $this->redirect(array("/myproject/employee"));
+            $this->redirect(array("/myproject/employee/home"));
         }
 
         return $this->render("index");

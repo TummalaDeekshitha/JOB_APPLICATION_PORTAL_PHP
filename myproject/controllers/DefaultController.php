@@ -32,4 +32,16 @@ $url='http://3.110.217.66/insert/';
         echo $st;exit;
         $this->render('index');
     }
+
+    public function actionChange(){
+        $res=CronHelper::availabilityCheck();
+        var_dump($res);
+        // if($res['writeResult']['nMatched'] == $res['writeResult']['nModified']){
+        // echo("success");}
+        // var_dump($res['isAcknowledged']);
+        exit;
+    }
+    public function actionHello(){
+        var_dump(CronHelper::rejectApplications());exit;
+    }
 }
