@@ -2,7 +2,7 @@
 use app\helpers\Mailhelper;
 // use app\helpers\OtpHelper;
 
-// require_once "/data/live/protected/modules/myproject/components/helpers/Mailhelper.php";
+require_once "/data/live/protected/modules/myproject/components/helpers/Mailhelper.php";
 class AdminHelper
 {
     public static function getEmployeeDetails()

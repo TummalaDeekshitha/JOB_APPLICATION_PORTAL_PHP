@@ -18,15 +18,9 @@ class AboutController extends CController{
     public $layout="aboutpagelayout";
     public function actionIndex()
     {
-        if(Yii::app()->user->isGuest)
-        {
-            // exit(var_dump(Yii::app()->user->isGuest));
-            $this->redirect("/myproject/signinform");
-        }
+        
      $username=Yii::app()->user->getState("username");
-    //  $session = new CHttpSession;
-    //  $session->open();
-  // $username=$session["username"];
+    
      return $this->render("about",array("username" =>$username ));
     }
    
@@ -89,7 +83,7 @@ class AboutController extends CController{
         $model->attributes = $_POST['ApplicationCollection'];
         $tempFilePath = $_FILES['ApplicationCollection']['tmp_name']['resume'];
         $jobid = isset($_POST['job_id']) ? trim($_POST['job_id']) : null;
-        $model->jobid=new MongoDb\BSON\ObjectId ($jobid);
+        $model->jobid=new MongoDB\BSON\ObjectId ($jobid);
         $model->resume=$tempFilePath;
         if (!$model->validate()) {
             $this->render("applicationform",
@@ -164,6 +158,7 @@ public function actionApplicationDetails()
     if(Yii::app()->request->isAjaxRequest){
         {
             $jobId=Yii::app()->request->getPost('JobId');
+            $jobId=$jobId['$oid'];
             $application=AboutHelper::applicationDetails($jobId);
 
             if($application){

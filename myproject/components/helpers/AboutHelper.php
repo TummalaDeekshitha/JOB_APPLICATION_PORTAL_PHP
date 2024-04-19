@@ -16,13 +16,14 @@ class AboutHelper extends CComponent {
             $model->category=$job->category;
             $model->companyName=$job->companyName;
             $model->location=$job->details->location;
+            
             if ($model->save()!=Null) {
                 return true;
             } 
         }
         return false;
     }
-
+   
     
     public static function jobs($company=Null,$job=Null,$location=Null,$salary=Null,$category=NUll)
     {
@@ -66,7 +67,8 @@ class AboutHelper extends CComponent {
     }
     public static function applicationDetails($jobId)
     {
-     $application=Jobs::model()->findByAttributes(array("_id"=> new \MongoDB\BSON\ObjectId($jobId)));
+       
+     $application=Jobs::model()->findByAttributes(array("_id"=> new MongoDB\BSON\ObjectId ($jobId)));
      
      $application= $application->getAttributes();
      $application['lastDate'] = date('Y-m-d', $application['lastDate']->sec);

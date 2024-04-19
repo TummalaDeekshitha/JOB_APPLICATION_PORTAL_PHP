@@ -5,11 +5,10 @@ class LogoutController extends Controller{
     {
         
         $email=Yii::app()->session["jwtToken"];
-        var_dump(Yii::app()->session["jwtToken"]);
+       
         
         $y=Yii::app()->user->getstate("username");
         Yii::app()->user->logout();
-        echo $email;
         $this->redirect("/myproject/index");
       
     }

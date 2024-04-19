@@ -38,10 +38,10 @@
         <?php echo $form->fileField($model, 'resume', ['class' => 'form-control']); ?>
         <?php echo $form->error($model, 'resume', array('class' => 'text-danger')); ?>
     </div>
-    <script>
+    <!-- <script>
 
-      console.log(  <?php echo($jobid) ?>);
-    </script>
+      console.log(  <!?php echo($jobid) ?>);
+    </script> -->
     <?php echo CHtml::hiddenField('job_id', $jobid); ?>
     <!-- <!?php echo CHtml::hiddenField('category', $category); ?>
     <!?php echo CHtml::hiddenField('jobname', $jobname); ?>

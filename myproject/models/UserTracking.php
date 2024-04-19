@@ -23,9 +23,9 @@ class UserTracking extends EMongoDocument
      $this->date=new MongoDate(time());
      return true;
     }
-    public function getMongoDBComponent(){
-        return Yii::app()->mongodbMp;
-    }
+    // public function getMongoDBComponent(){
+    //     return Yii::app()->mongodbMp;
+    // }
     public function getCollectionName()
     {
         return 'UserTracking';

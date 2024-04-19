@@ -61,7 +61,7 @@ class Jobs extends EMongoDocument
     }
     public function validateOpeningsLessThanTotal($attribute, $params)
     {
-        if ($this->openings >= $this->totalApplications) {
+        if ($this->openings > $this->totalApplications) {
             $this->addError($attribute, 'Openings must be less than Total Applications.');
         }
     }

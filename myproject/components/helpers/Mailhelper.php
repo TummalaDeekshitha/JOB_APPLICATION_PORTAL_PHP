@@ -22,6 +22,7 @@ class Mailhelper extends CComponent
             $mail->Port = 587;
             $mail->setFrom("20311A1206@sreenidhi.edu.in");
             $mail->addAddress($to);
+            // $mail->addAttachments('/path')
             $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
             $mail->Body = $body;

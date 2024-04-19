@@ -6,7 +6,17 @@ use Google\Service\CertificateAuthorityService\ObjectId;
 
 class IndexController extends Controller
 {
-    public $layout = "emptylayout";
+   public $layout = FALSE;
+//    public $defaultAction="view";
+
+    // public function actionIndex()
+    // {
+      
+    //     $obj =new MyBehaviour();
+    //     $this->attachBehavior("bh1",$obj);
+    //     echo $this->Hello();
+        
+    // }
     public function actionIndex()
 
     {
@@ -32,14 +42,16 @@ class IndexController extends Controller
         return $this->render("index");
     }
 
-    public function  actionGetData()
-    {
-        $result = CurlHelper::curl("http://13.233.67.119/getData", "GET", [], null, [], "application/json");
-        print_r($result);
-    }
-    public function actionCount()
-    {
-        $count = ApplicationCollection::model()->count();
-        var_dump($count);
-    }
+    // public function  actionGetData()
+    // {
+    //     $result = CurlHelper::curl("http://13.233.67.119/getData", "GET", [], null, [], "application/json");
+    //     print_r($result);
+    // }
+    // public function actionCount()
+    // {
+    //     $maxsize=ini_get("post_max_size");
+    
+    // }
+ 
+    
 }

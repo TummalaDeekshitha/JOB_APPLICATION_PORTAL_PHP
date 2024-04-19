@@ -8,12 +8,7 @@ class SigninformController extends Controller{
     public function actionIndex()
     {
 
-      // $result=Yii::app()->cache->executeCommand('hset',['test','key1','v1']);
-      //   $result=Yii::app()->cache->executeCommand('hgetall',['test']);
-      // $session = Yii::app()->session;
-      //   $session->open();
-      //   $session['name1'] = 'testsession';
-        
+      
         $model=new Signinform();
        $this->render('signin',array('model'=>$model,"message"=>" "));
     }
@@ -31,9 +26,6 @@ class SigninformController extends Controller{
             {  
               $payload = array('email' => $model->email,'role'=>"user");
               $token = Yii::app()->jwt->encode($payload);
-             
-              $session = Yii::app()->session;
-              $session->open();
               Yii::app()->session["jwtToken"]=$token;
       
             

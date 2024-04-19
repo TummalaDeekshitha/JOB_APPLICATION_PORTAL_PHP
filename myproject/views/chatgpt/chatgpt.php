@@ -102,15 +102,13 @@
         <div class="chat-container">
             
             <div class="row">
-                <div class="col-6 chat-image">
-                    <img src="https://via.placeholder.com/300" alt="User Image">
-                    <a type="button" class="close-btn btn btn-danger" href="/myproject/about">close</a> <!-- Close button added -->
-                </div>
+                
                
-                <div class="col-6">
+                <div >
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab" aria-controls="chat" aria-selected="true">Chat</button>
+                            <button class="nav-link active" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab" aria-controls="chat" aria-selected="true">Ask your queries</button>
+                            <a type="button" class="close-btn btn btn-danger" href="/myproject/about">close</a> <!-- Close button added -->
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">

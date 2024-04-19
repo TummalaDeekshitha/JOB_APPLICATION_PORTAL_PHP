@@ -5,7 +5,7 @@ class Signinform extends CFormModel
     public $_id;
     public $email;
     public $password;
-    public $rememberMe = false; // Added rememberMe property
+    // public $rememberMe = false; // Added rememberMe property
     private $_identity;
 
     public function rules()
@@ -13,7 +13,7 @@ class Signinform extends CFormModel
         return array(
             array('password, email', 'required'),
             array('email', 'email'),
-            array('rememberMe', 'boolean'), // Validation rule for rememberMe
+            // array('rememberMe', 'boolean'), // Validation rule for rememberMe
             array('password', 'authenticate'),
         );
     }
@@ -23,7 +23,7 @@ class Signinform extends CFormModel
         return array(
             'email' => 'Email',
             'password' => 'Password',
-            'rememberMe' => 'Remember Me', // Label for rememberMe checkbox
+            // 'rememberMe' => 'Remember Me', // Label for rememberMe checkbox
         );
     }
 
