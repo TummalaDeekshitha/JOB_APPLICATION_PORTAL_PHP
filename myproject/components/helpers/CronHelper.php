@@ -3,7 +3,7 @@
 
 use app\helpers\MailHelper;
 
-require_once('/data/live/protected/modules/myproject/components/helpers/Mailhelper.php');
+// require_once('/data/live/protected/modules/myproject/components/helpers/MailHelper.php');
 
 class CronHelper
 {

@@ -2,7 +2,7 @@
 
 use app\helpers\MailHelper;
 
-require_once('/data/live/protected/modules/myproject/components/helpers/Mailhelper.php');
+require_once('/data/live/protected/modules/myproject/components/helpers/MailHelper.php');
 
 class JobsHelper
 {
@@ -45,7 +45,7 @@ class JobsHelper
         // var_dump($data);exit;
         $st = $data->update(['status'], true); //update is commented for testing
         // var_dump($st);exit;
-        Mailhelper::sendMail($data->email, "Application Status", strtoupper($_POST["uStatus"]));
+        MailHelper::sendMail($data->email, "Application Status", strtoupper($_POST["uStatus"]));
         if ($st) {
             $id = new MongoDB\BSON\ObjectID((string) $_POST["jid"]);
             // $criteria = new EMongoCriteria();

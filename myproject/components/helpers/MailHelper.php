@@ -1,11 +1,11 @@
+[11:02] Deekshitha Tummala
 <?php
-namespace app\helpers;
-
-use CComponent;
-use Yii;
+// namespace app\helpers;
+ 
+ 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-class Mailhelper extends CComponent
+class MailHelper
 {
     public static function sendMail($to, $subject, $body)
     {
@@ -21,13 +21,13 @@ class Mailhelper extends CComponent
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587;
             $mail->setFrom("20311A1206@sreenidhi.edu.in");
-            // $mail->addAddress($to);
+            
             $mail->addAddress($to);
-
+            // $mail->addAttachments('/path')
             $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
             $mail->Body = $body;
-
+ 
             $mail->send();
            return true;
         } catch (Exception $e) {

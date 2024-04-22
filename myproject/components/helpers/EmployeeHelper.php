@@ -2,7 +2,7 @@
 
 use app\helpers\MailHelper;
 
-require_once('/data/live/protected/modules/myproject/components/helpers/Mailhelper.php');
+// require_once('/data/live/protected/modules/myproject/components/helpers/MailHelper.php');
 
 class EmployeeHelper
 {
@@ -81,7 +81,7 @@ class EmployeeHelper
 </body>
 </html>
 ";
-                    Mailhelper::sendMail($_POST['EmployeeSignin']['email'], "Signin", $emailContent);
+                    MailHelper::sendMail($_POST['EmployeeSignin']['email'], "Signin", $emailContent);
                     unset($_POST['EmployeeSignin']);
 
                     return 1;
@@ -99,7 +99,7 @@ class EmployeeHelper
 </body>
 </html>
 ";
-                    Mailhelper::sendMail($_POST['EmployeeSignin']['email'], "Signin", $emailContent);
+                    MailHelper::sendMail($_POST['EmployeeSignin']['email'], "Signin", $emailContent);
 
                     unset($_POST['EmployeeSignin']);
 
