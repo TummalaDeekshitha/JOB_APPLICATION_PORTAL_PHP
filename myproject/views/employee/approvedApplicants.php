@@ -91,14 +91,15 @@
 </head>
 
 <body>
+    <?php //var_dump($applications);exit;?>
     <!-- Fixed search form -->
     <div class="fixed-search">
-        <form class="form-inline search-form" action="<?php echo $this->createUrl('employee/myapplicants') ?>" method="post">
+        <form class="form-inline search-form" action="<?php echo $this->createUrl('employee/CheckedMyapplicants') ?>" method="post">
             <div class="form-group mr-2 mb-0">
                 <select name="selectCategory" class="form-control form-control-sm">
                     <option value="None">All</option>
-                    <option value="software">Software</option>
-                    <option value="core">Core</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Approved">Approved</option>
                     <!-- Add more options as needed -->
                 </select>
             </div>
@@ -108,7 +109,7 @@
 
     <div class="container">
         <br><br><br>
-        <h1 class="mb-4">New Applications</h1>
+        <h1 class="mb-4">Previous Applications </h1>
 
         <!-- Application Cards -->
         <?php foreach ($applications as $application) { ?>
@@ -130,20 +131,9 @@
                 <div class="btn-group-vertical" role="group">
                     <a href="#" class="btn btn-info"
                         onclick="openResumeModal('<?php echo $application['resume']; ?>')">Open Resume</a>
-                    <form action="<?php echo $this->createUrl('/myproject/jobs/UpdateApplication') ?>"
-                        method="post">
-                        <input type="hidden" name="uStatus" value="approved">
-                        <input type="hidden" name="id" value="<?php echo $application["_id"]; ?>">
-                        <input type="hidden" name="jid" value="<?php echo $application["jobid"]; ?>">
-                        <button type="submit" class="btn btn-success">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspApprove&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-                    </form>
-                    <form action="<?php echo $this->createUrl('/myproject/jobs/UpdateApplication') ?>"
-                        method="post">
-                        <input type="hidden" name="uStatus" value="rejected">
-                        <input type="hidden" name="id" value="<?php echo $application["_id"]; ?>">
-                        <input type="hidden" name="jid" value="<?php echo $application["jobid"]; ?>">
-                        <button type="submit" class="btn btn-danger">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReject&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-                    </form>
+                    <br><h5 class="card-text">Status:
+                        <?php echo ucfirst($application['status']); ?>
+        </h5>
                 </div>
             </div>
         <?php } ?>

@@ -50,6 +50,34 @@ class EmployeeHelper
         return $applications;
     }
 
+    public static function Mycheckedapplicants()
+    {
+        $sts=['approved','rejected'];
+        $criteria = new EMongoCriteria;
+        $criteria->addCond('email', '==', base64_decode((Yii::app()->session["empInfo"]["token"])));
+        $distinctValues = Jobs::model()->findAll($criteria);
+        $jobIds = array_map(function ($id) {
+            // ["_id"=> new \MongoDB\BSON\ObjectId($this->jobid) ]
+            return ($id["_id"]);
+        }, $distinctValues);
+        // var_dump($jobIds);
+        // exit;
+        $criteria = new EMongoCriteria;
+        $criteria = [
+            'jobid' => ['$in' => $jobIds],
+            'status' => ['$in'=>$sts],
+        ];
+        if (isset($_POST['selectCategory']) && ($_POST['selectCategory'] == "Rejected" || $_POST['selectCategory'] == "Approved")) {
+
+            $criteria['status'] = strtolower($_POST['selectCategory']);
+            unset($_POST['selectCategory']);
+        }
+        $applications = ApplicationCollection::model()->findAllByAttributes($criteria);
+        // var_dump($applications);
+        return $applications;
+    }
+
+
     public static function signin()
     {
         $model = new EmployeeSignin();

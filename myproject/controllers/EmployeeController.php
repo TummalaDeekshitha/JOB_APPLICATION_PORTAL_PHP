@@ -122,7 +122,15 @@ class EmployeeController extends Controller
         $this->render("applicants", array('applications' => $applications));
     }
 
-
+    public function actionCheckedMyapplicants()
+    {
+        if (!(Yii::app()->session["empInfo"]["token"])) {
+            $this->redirect(array("/myproject"));
+        }
+        $this->layout = "employeelayout";
+        $applications = EmployeeHelper::Mycheckedapplicants();
+        $this->render("approvedApplicants", array('applications' => $applications));
+    }
 
     public function actionPosts()
     {

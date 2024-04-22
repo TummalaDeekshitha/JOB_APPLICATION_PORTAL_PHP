@@ -92,16 +92,19 @@
                     <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="Myapplicants">My Applicants</a>
+                                <a class="nav-link" href="Myapplicants">New Applicants</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="CheckedMyapplicants">Past Applicants</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="posts">My Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Logout">Logout</a>
+                                <a class="nav-link" href="jobs">Add Job</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="jobs">Add Job</a>
+                                <a class="nav-link" href="Logout">Logout</a>
                             </li>
                         </ul>
                     </div>
