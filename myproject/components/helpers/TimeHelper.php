@@ -1,5 +1,5 @@
 <?php 
-class TimeHelper extends CComponent
+class TimeHelper 
 {
     public static function getDateNDaysBack($n)
 {
@@ -24,7 +24,8 @@ public  static function getDateNMonthsBack($n)
 public static function startDate($timerange)
 {
     if ($timerange == 'today') {
-        $startDate =TimeHelper::getDateNDaysBack(0);
+        $startDate = new DateTime();
+         $startDate->setTime(0, 0, 0);
     } elseif ($timerange == '5days') {
         $startDate =TimeHelper::getDateNDaysBack(5);
     } elseif ($timerange == '10days') {

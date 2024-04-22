@@ -18,7 +18,7 @@
                     <?php $form = $this->beginWidget('CActiveForm', array(
                         
                         'id' => 'signin-form',
-                        'enableClientValidation' => true,
+                        // 'enableClientValidation' => true,
                         'action' => Yii::app()->createUrl('/myproject/signinform/signin'),
                         'clientOptions' => array(
                             'validateOnSubmit' => true,

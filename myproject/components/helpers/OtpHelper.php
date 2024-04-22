@@ -1,36 +1,42 @@
 <?php
-use app\helpers\Mailhelper;
-class OtpHelper extends CComponent
+class OtpHelper 
 {
 
-    public static function sendOtp()
+    public static function sendOtp($email)
     {
         $otp = rand(100000, 999999);
-        Yii::app()->session['otp'] = $otp;
-        $time = time();
-        Yii::app()->session['time'] = $time;
+        // Yii::app()->session['otp'] = $otp;
+        Yii::app()->cache->executeCommand('set', [$email, $otp, 'EX', 60 * 5]);
+        
        return $otp;
     }
-    public static function verifyOtp($user_otp)
+    public static function verifyOtp($email,$otp)
     {
 
-        $time = Yii::app()->session['time'] + 60;
+        // $time = Yii::app()->session['time'] + 60;
 
-        $cur = time();
+        // $cur = time();
 
 
-        if ($cur <= $time) {
-            $otp = Yii::app()->session['otp'];
-            if ($otp == $user_otp) {
-                unset(Yii::app()->session['otp']);
-                return 1;
-            } else {
-                unset(Yii::app()->session['otp']);
-                return 0;
-            }
+        // if ($cur <= $time) {
+        //     $otp = Yii::app()->session['otp'];
+        //     if ($otp == $user_otp) {
+        //         unset(Yii::app()->session['otp']);
+        //         return 1;
+        //     } else {
+        //         unset(Yii::app()->session['otp']);
+        //         return 0;
+        //     }
            
+        // } else {
+        //     return "Your Otp expired try again";
+        // }
+        $redisOTP = Yii::app()->cache->executeCommand("get", [$email]);
+        if ($redisOTP === $otp) {
+            return  1;
         } else {
-            return "Your Otp expired try again";
+            return 0;
         }
+
     }
 }

@@ -5,6 +5,7 @@ class AboutController extends CController{
 
     public function filters()
     {
+    // 'AuthFilter-"index,jobs"',
       return array(
         'AuthFilter',
       );
@@ -48,13 +49,14 @@ class AboutController extends CController{
         
         if(Yii::app()->request->isAjaxRequest){
     {
-        $jobIdArray = Yii::app()->request->getPost('jobId');
-        $token=Yii::app()->session['jwtToken'];
-        if ($jobIdArray !== null  && $token ) {
+        $jobId = Yii::app()->request->getPost('jobId');
+        $token=Yii::app()->request->cookies['jwtToken']->value;
+        if ($jobId !== null  && $token ) {
         $decoded = JWT::decode($token, new Key(Yii::app()->params['secretKey'], Yii::app()->params["algorithm"]));
          $useremail=$decoded->data->email;
-            $jobId=new \MongoDB\BSON\ObjectId($jobid['$oid']);
-        $status=AboutHelper::addUserTrack($jobId,$useremail);
+         $jobid =trim($jobId['$oid']);
+        
+        $status=AboutHelper::addUserTrack($jobid,$useremail);
         if($status){
             echo "Success";
             
@@ -116,12 +118,11 @@ class AboutController extends CController{
                 return;
             }
             $model->status = "pending";
-            $model->save();
-            $id =new \MongoDB\BSON\ObjectId($jobid);
-            $job = Jobs::model()->findByAttributes(array('_id' => $id));
-            if ($job) {
-                $job->openings--; 
-                $job->save(); 
+            
+            
+            if ($model->save()) {
+                $this->render("successpage",array("status"=>"success"));
+                return;
     
             } 
             else {
@@ -129,9 +130,7 @@ class AboutController extends CController{
                 return;
             }
 
-            // Render success view
-            $this->render("successpage",array("status"=>"success"));
-            return;
+            
         }
     }
 }

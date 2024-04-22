@@ -1,11 +1,12 @@
 <?php
-class ChatgptHelper extends CComponent {
+class ChatgptHelper {
 
 
     public static function getChat($conversation)
   {
     // Set the endpoint
     $url = "https://api.openai.com/v1/chat/completions";
+    
  
     // Set the method
     $method = "POST";

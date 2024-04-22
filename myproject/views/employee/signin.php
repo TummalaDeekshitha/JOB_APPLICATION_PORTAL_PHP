@@ -97,12 +97,14 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- Image -->
-                <img src="/images/signupact.jpeg" alt="Signup Image" class="img-fluid">
+                <br><br><br><br>
+                <img src="/images/signin.png" alt="Signup Image" class="img-fluid" style="max-width: 200px;max: height 200px;">
             </div>
             <div class="col-md-6 form-container">
                 <!-- Sign In Form -->
                 <div class="form-container ">
-                    <h2>Signin Form</h2>
+                    <!-- <h2>Signin Form</h2> -->
+                    <br><br>
                     <span style="text-align: left;">
                         <!-- Display custom message if provided -->
                         <?php if ($message): ?>
@@ -122,14 +124,7 @@
                             ),
                         )
                         ); ?>
-                        <div class="social-container">
-
-                            <a href="http://demo.darwinboxlocal.com/index.php/myproject/signinform/googlelogin"
-                                class="social"><i class="fab fa-google-plus-g"></i></a>
-                            <a href="http://demo.darwinboxlocal.com/index.php/myproject/signinform/linkedinlogin"
-                                class="social"><i class="fab fa-linkedin-in"></i></a>
-
-                        </div>
+                                                
                         <div class="form-group">
                             <?php echo $form->labelEx($model, 'email', array('class' => 'form-label')); ?>
                             <?php echo $form->textField($model, 'email', array('class' => 'form-control')); ?>
@@ -147,11 +142,6 @@
                         </div>
 
                         <?php $this->endWidget(); ?>
-                        <div class="forgot-link">
-                            <p class="text-center">Forgot password..? <a
-                                    href="<?php echo Yii::app()->createUrl('/myproject/signinform/forgotpassword'); ?>">Reset
-                                    password</a></p>
-                        </div>
                         <div class="signup-link">
                             <p class="text-center">Don't have an account..? <a
                                     href="<?php echo Yii::app()->createUrl('/myproject/employee/signup'); ?>">Sign

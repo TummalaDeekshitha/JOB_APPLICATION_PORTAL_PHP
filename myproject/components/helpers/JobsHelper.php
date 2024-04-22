@@ -1,5 +1,6 @@
 <?php
-use app\helpers\MailHelper;
+
+
 
 class JobsHelper
 {
@@ -10,7 +11,7 @@ class JobsHelper
 
         $s3Object = new S3Helper();
         $link = $s3Object->upload($path, "image/jpeg");
-        $model->attributes = $_POST['Jobs'];//['AddForm'];
+        $model->attributes = $_POST['Jobs']; //['AddForm'];
         $model->openings = intval($model->openings);
         $model->totalApplications = intval($model->totalApplications);
         $model->details->attributes = $_POST['JobDetails'];
@@ -33,27 +34,35 @@ class JobsHelper
     public static function updateApplication()
     {
         $id = new MongoDB\BSON\ObjectID((string) $_POST["id"]);
+        var_dump($id);
         $data = ApplicationCollection::model()->findByAttributes(array('_id' => $id));
         if ($data === null) {
             return null;
         }
-        $data->status = $_POST["status"];
-        $st = $data->update(['status'], true);//update is commented for testing
+        $data->status = $_POST["uStatus"];
+        // var_dump($data);exit;
+        $st = $data->update(['status'], true); //update is commented for testing
+        // var_dump($st);exit;
+        MailHelper::sendMail($data->email, "Application Status", strtoupper($_POST["uStatus"]));
         if ($st) {
-            $modifier = new EMongoModifier();
-            $modifier->addModifier('openings', 'inc', -1);
             $id = new MongoDB\BSON\ObjectID((string) $_POST["jid"]);
-            $criteria = new EMongoCriteria();
-            $criteria->addCond('_id', '==', $id);
-            $status = Jobs::model()->updateAll($modifier, $criteria);//update is commented for testing
-            
+            // $criteria = new EMongoCriteria();
+            $doc = Jobs::model()->findByAttributes(array("_id" => $id));
+            $doc->openings = $doc->openings - 1;
+            // var_dump( $doc->openings);
+            $doc->update(['openings'], true); //update is commented for testing
+
+            // $modifier = new EMongoModifier();
+            // $modifier->addModifier('openings', 'inc', -1);
+            // $criteria->addCond('_id', '==', $id);
+            // $status = ;//Jobs::model()->updateAll($modifier, $criteria);//update is commented for testing
+
         }
         // Delete the model
         // $data->delete();
         // Redirect to the index page or any other page
         unset($_POST["id"]);
         return $st;
-
     }
     public static function deletejob()
     {

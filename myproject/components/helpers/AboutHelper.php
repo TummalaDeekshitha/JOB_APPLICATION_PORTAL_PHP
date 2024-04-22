@@ -1,17 +1,17 @@
 <?php
-class AboutHelper extends CComponent {
+class AboutHelper {
     public static function addUserTrack($jobid, $useremail)
     {
        
         
-        $existingModel = UserTracking::model()->findByAttributes(['email' => $useremail,'jobid'=>$jobid]);
+        $existingModel = UserTracking::model()->findByAttributes(['email' => $useremail,'jobid'=>new \MongoDB\BSON\ObjectId ($jobid)]);
         $model = new UserTracking();
         $model->email = $useremail;
         if ($existingModel == null) {
             
-            $job=Jobs::model()->findByPk($jobid);
+            $job=Jobs::model()->findByPk(new \MongoDB\BSON\ObjectId ($jobid));
         
-            $model->jobid= $jobid;
+            $model->jobid= new \MongoDB\BSON\ObjectId ($jobid);
             $model->jobName=$job->jobTitle;
             $model->category=$job->category;
             $model->companyName=$job->companyName;

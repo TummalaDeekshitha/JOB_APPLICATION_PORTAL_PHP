@@ -33,7 +33,7 @@ class Jobs extends EMongoDocument
             if ($this->isNewRecord) {
                 $this->totalApplications = (int) $this->totalApplications;
                 $this->openings = (int) $this->openings;
-                $this->details->salary = (int) $this->details->salary;
+                $this->isAvailable=true;
                 $this->lastDate = new MongoDate(strtotime($this->lastDate));
                 $this->postedTime = new MongoDate(strtotime(date('Y-m-d H:i:s')));// Assuming create_time is a datetime field
             }

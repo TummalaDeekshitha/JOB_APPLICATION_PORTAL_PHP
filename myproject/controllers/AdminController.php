@@ -15,9 +15,9 @@ class AdminController extends CController{
       }
 
 
-      else if(isset(Yii::app()->session['jwtToken']))
+      else if(isset(Yii::app()->request->cookies['jwtToken']))
       {
-        $token=Yii::app()->session['jwtToken'];
+        $token=Yii::app()->request->cookies['jwtToken']->value;
         $decoded = JWT::decode($token, new Key(Yii::app()->params['secretKey'], Yii::app()->params["algorithm"]));
        if(isset($decoded->data->email) ){
         if($decoded->data->role=="admin" ){
@@ -47,8 +47,8 @@ class AdminController extends CController{
                $payload = array('email' => $model->email,'role'=>"admin");
                $token = Yii::app()->jwt->encode($payload);
                echo $token;
-               
-               Yii::app()->session["jwtToken"]=$token;
+               $cookie=new CHttpCookie("jwtToken",$token);
+              yii::app()->request->cookies['jwtToken']=$cookie;
 
              $this->redirect("/myproject/admin/about");
              }
@@ -106,7 +106,11 @@ class AdminController extends CController{
   }
   public function actionLogout()
   {
-    Yii::app()->session->destroy();
+    $cookie=Yii::app()->request->cookies["jwtToken"];
+    $cookie->expire=time()-3600;
+    Yii::app()->request->cookies['jwtToken'] = $cookie;
+    unset(Yii::app()->request->cookies["jwtToken"]);
+   
     $this->redirect("/myproject/index");
   }
 

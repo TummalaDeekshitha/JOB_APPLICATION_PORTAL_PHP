@@ -2,7 +2,7 @@
 
 use \Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use Google\Service\CertificateAuthorityService\ObjectId;
+// use Google\Service\CertificateAuthorityService\ObjectId;
 
 class IndexController extends Controller
 {
@@ -21,8 +21,8 @@ class IndexController extends Controller
 
     {
 
-        if (Yii::app()->session['jwtToken']) {
-            $token = Yii::app()->session['jwtToken'];
+        if (isset(Yii::app()->request->cookies["jwtToken"])) {
+            $token = Yii::app()->request->cookies["jwtToken"]->value;
             $decoded = JWT::decode($token, new Key(Yii::app()->params['secretKey'], Yii::app()->params["algorithm"]));
             if (isset($decoded->data->email)) {
                 if ($decoded->data->role == "user") {
@@ -36,7 +36,8 @@ class IndexController extends Controller
             }
         }
         if ((Yii::app()->session["empInfo"]["token"])) {
-            $this->redirect(array("/myproject/employee"));
+            $this->redirect(array("/myproject/employee/home"));
+            return;
         }
 
         return $this->render("index");
@@ -49,8 +50,32 @@ class IndexController extends Controller
     // }
     // public function actionCount()
     // {
-    //     $maxsize=ini_get("post_max_size");
-    
+    //     $date=new DateTime();
+    //     $date2=$date->format('y-m-d');
+    //     $m=$date->format("m");
+    //     $y=$date->format("y");
+    //     if($m==1)
+    //     {
+    //         $y -=1;
+    //         $m=12;
+    //     }
+    //     else{
+    //         $m -=1;
+    //     }
+    //     $gro = ['$group' => ['_id' => ['month' => ['$month' => ['$toDate' => '$appliedDate']], 'year' => ['$year' => ['$toDate' => '$appliedDate']]], 'count' => ['$sum' => 1]]];
+    //     $mat=[
+    //         '$match'=>[
+    //            "_id.month"=>$m+1
+    //         ]
+    //         ];
+    //     $model=ApplicationCollection::model()->startAggregation()
+    //     ->addStage($gro)
+    //     ->addStage($mat)
+    //     ->aggregate();  
+    // var_dump($model);
+
+
+
     // }
  
     

@@ -30,8 +30,12 @@ class Signupcolls extends EMongoDocument  {
     // }
 public function beforeSave()
 {
+    if($this->isNewRecord)
+    {
+        $this->email = strtolower($this->email);
+        $this->password= password_hash($this->password, PASSWORD_DEFAULT);
+    }
     
-    $this->email = strtolower($this->email);
     return true;
 
 }
@@ -55,7 +59,7 @@ public function rules()
             return parent::beforeSave();
         }
         $email = strtolower($this->$attribute);
-        $existingUser =Signupcolls::model()->findByAttributes(array('email' =>$email));
+        $existingUser =Signupcolls::model()->findByPk($email);
         if ($existingUser !== null) {
             $this->addError($attribute, 'This email is already registered.');
             return false;

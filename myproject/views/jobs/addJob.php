@@ -1,27 +1,29 @@
-<?php use yii\helpers\Html; ?>
+<?php
+
+use yii\helpers\Html; ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Display</title>
+    <title>Add Job</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <style>
         body {
             padding: 20px;
-            background-color: grey;
+            background-color: #ff8300;
         }
 
         .form {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             border: 2px solid black;
             border-radius: 10px;
             padding: 20px;
-            background-color: skyblue;
+            background-color: white;
         }
 
         .form label {
@@ -54,6 +56,26 @@
             width: 20%;
             /* Adjust button width */
         }
+
+        .form-container {
+            max-width: 1000px;
+            /* Adjust the max-width as needed */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            /* Set background color to white */
+        }
+
+        .form-control {
+            background-color: #f0f0f0;
+            /* Set light grey background for input fields */
+        }#add-submit {
+    padding: 5px 10px; /* Adjust the padding to make the button smaller */
+    font-size: 15px; /* Adjust the font size to make the text smaller */
+    height: auto;
+}
+
+        
     </style>
 </head>
 
@@ -61,7 +83,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
-                <h2>Add new Job entry</h2>
+                <h2 style="color:#f0f0f0;">Add new Job entry</h2>
             </div>
         </div>
     </div>
@@ -169,9 +191,10 @@
         </div>
 
         <div class="row buttons">
-            <div class="col-md-6">
-                <?php echo CHtml::submitButton('Add', array('id' => 'add-submit', 'class' => 'btn btn-primary btn-block btn-sm')); ?>
-            </div>
+        <div class="col-md-2"> <!-- Adjust the column width to fit the smaller button -->
+    <?php echo CHtml::submitButton('Add', array('id' => 'add-submit', 'class' => 'btn btn-primary btn-block btn-sm')); ?>
+</div>
+
             <?php $this->endWidget(); ?>
             <a href="/myproject/jobs/Cancel" class="btn btn-secondary">Cancel</a>
 
@@ -180,14 +203,13 @@
     </div><!-- form -->
 
     <script>
-        document.getElementById('add-submit').addEventListener('click', function (event) {
+        document.getElementById('add-submit').addEventListener('click', function(event) {
             var logoInput = document.getElementById('logo-input');
             if (logoInput.files.length === 0) {
                 event.preventDefault(); // Prevent form submission
                 alert('Please upload a logo image.');
             }
         });
-
     </script>
 </body>
 
