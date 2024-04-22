@@ -1,5 +1,4 @@
 <?php
-require_once ('protected/modules/myproject/components/helpers/JobsHelper.php');
 require_once ('protected/modules/myproject/components/helpers/S3Helper.php');
 class JobsController extends Controller
 {
