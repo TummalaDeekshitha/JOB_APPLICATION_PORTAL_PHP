@@ -170,37 +170,37 @@
 
                         <div class="form-group">
                             <?php echo $form->labelEx($model, '', array('class' => 'form-label')); ?>
-                            <?php echo $form->textField($model, 'name', array('placeholder' => 'Full Name', 'class' => 'form-control')); ?>
+                            <?php echo $form->textField($model, 'name', array('placeholder' => 'Full Name *', 'class' => 'form-control','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <!-- <?php //echo $form->labelEx($model, 'companyName', array('class' => 'form-label'));     ?> -->
-                            <?php echo $form->textField($model, 'companyName', array('placeholder' => 'Company Name', 'class' => 'form-control')); ?>
+                            <?php echo $form->textField($model, 'companyName', array('placeholder' => 'Company Name *', 'class' => 'form-control','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <!-- <?php //echo $form->labelEx($model, 'email', array('class' => 'form-label'));     ?> -->
-                            <?php echo $form->textField($model, 'email', array('placeholder' => 'Email', 'class' => 'form-control')); ?>
+                            <?php echo $form->textField($model, 'email', array('placeholder' => 'Email *', 'class' => 'form-control','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <!-- <?php //echo $form->labelEx($model, 'password', array('class' => 'form-label'));     ?> -->
-                            <?php echo $form->passwordField($model, 'password', array('placeholder' => 'Password', 'class' => 'form-control')); ?>
+                            <?php echo $form->passwordField($model, 'password', array('placeholder' => 'Password *', 'class' => 'form-control','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <!-- <?php //echo $form->labelEx($model, 'industry', array('class' => 'form-label'));     ?> -->
-                            <?php echo $form->dropDownList($model, 'industry', array('software' => 'Software', 'core' => 'Core'), array('class' => 'form-control', 'prompt' => 'Select industry')); ?>
+                            <?php echo $form->dropDownList($model, 'industry', array('software' => 'Software', 'core' => 'Core'), array('class' => 'form-control', 'prompt' => 'Select industry *','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <!-- <?php //echo $form->labelEx($model, 'employeeId', array('class' => 'form-label'));     ?> -->
-                            <?php echo $form->textField($model, 'employeeId', array('placeholder' => 'Employee ID', 'class' => 'form-control')); ?>
+                            <?php echo $form->textField($model, 'employeeId', array('placeholder' => 'Employee ID *', 'class' => 'form-control','required' => 'required')); ?>
                         </div>
 
                         <div class="form-group">
                             <?php echo $form->labelEx($model, 'profile', array('class' => 'form-label')); ?>
-                            <?php echo $form->fileField($model, 'profile', array('placeholder' => 'Profile Picture', 'class' => 'form-control', 'accept' => 'image/*')); ?>
+                            <?php echo $form->fileField($model, 'profile', array('placeholder' => 'Profile Picture *', 'class' => 'form-control', 'accept' => 'image/*','required' => 'required')); ?>
                         </div>
 
                         <div class="row justify-content-end">

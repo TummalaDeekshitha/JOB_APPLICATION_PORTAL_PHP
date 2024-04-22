@@ -1,6 +1,8 @@
 <?php
 
- 
+// use app\helpers\MailHelper;
+
+// require_once('/data/live/protected/modules/myproject/components/helpers/MailHelper.php');
 
 class EmployeeHelper
 {
