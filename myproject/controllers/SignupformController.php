@@ -4,16 +4,19 @@ class SignupformController extends Controller
   public $layout='signinsignuplayout';
     public function actionIndex()
     { 
-        $model = new Signupform(); // Create a new instance of Signupform model
+        $model = new Signupcolls(); // Create a new instance of Signupform model
         $this->render('signupform', array('model' => $model)); // Pass the model to the view
     }
     public function actionSignup()
      {
-        if (isset($_POST["Signupform"])) {
-            $attributes= $_POST["Signupform"];
-            $model=new Signupform();
+        if (isset($_POST["Signupcolls"])) {
+            $attributes= $_POST["Signupcolls"];
+            $model=new Signupcolls();
+           
             $model->attributes=$attributes;
+           
             $b=SignupHelper::Signup($model);
+            
               if($b==true){
                $this->redirect('/myproject/signinform');
               }
@@ -25,7 +28,7 @@ class SignupformController extends Controller
                 
             } 
             else {
-              $model = new Signupform();
+              $model = new Signupcolls();
               $this->render('signupform', array('model' => $model));
             }
         }

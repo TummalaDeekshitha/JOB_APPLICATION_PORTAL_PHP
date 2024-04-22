@@ -1,28 +1,34 @@
 <?php
 use app\helpers\Mailhelper;
+use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 require_once "/data/live/protected/modules/myproject/components/helpers/Mailhelper.php";
 class AdminController extends CController{
-  public $layout=FALSE;
-  // public function filters()
-  //   {
-  //     return array(
-  //       'AdminFilter ',
-  //     );
-  //   }
-  //   public function filterAdminFilter($filterChain)
-  // {
-  //   $action = Yii::app()->controller->action->id;
- 
-  //   // Skip applying the filter if the action is 'code'
-  //   if ($action !== 'Index' && $action !== 'Signin') {
-  //     $filter = new AdminFilter();
-  //     $filter->filter($filterChain);
-  //   }
-  //   else {
-  //     // Call the next filter in the chain
-  //     $filterChain->run();
-  //   }
-  // }
+  public $layout=false;
+  public function beforeAction($action)
+    {
+      $action=yii::app()->controller->action->id;
+      
+      if($action=="index" || $action="signin")
+      {
+        return true;
+      }
+
+
+      else if(isset(Yii::app()->request->cookies['jwtToken']))
+      {
+        $token=Yii::app()->request->cookies['jwtToken']->value;
+        $decoded = JWT::decode($token, new Key(Yii::app()->params['secretKey'], Yii::app()->params["algorithm"]));
+       if(isset($decoded->data->email) ){
+        if($decoded->data->role=="admin" ){
+          return true;
+        }
+      }
+      
+    }
+    return false;
+  }
+
     public function actionIndex()
     {
         $model= new AdminSigninForm();
@@ -41,8 +47,8 @@ class AdminController extends CController{
                $payload = array('email' => $model->email,'role'=>"admin");
                $token = Yii::app()->jwt->encode($payload);
                echo $token;
-               
-               Yii::app()->session["jwtToken"]=$token;
+               $cookie=new CHttpCookie("jwtToken",$token);
+              yii::app()->request->cookies['jwtToken']=$cookie;
 
              $this->redirect("/myproject/admin/about");
              }
@@ -100,8 +106,12 @@ class AdminController extends CController{
   }
   public function actionLogout()
   {
-    Yii::app()->session->destroy();
-    $this->redirect("/myproject/admin");
+    $cookie=Yii::app()->request->cookies["jwtToken"];
+    $cookie->expire=time()-3600;
+    Yii::app()->request->cookies['jwtToken'] = $cookie;
+    unset(Yii::app()->request->cookies["jwtToken"]);
+   
+    $this->redirect("/myproject/index");
   }
 
 }

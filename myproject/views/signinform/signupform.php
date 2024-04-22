@@ -13,7 +13,7 @@
                     <?php $form = $this->beginWidget('CActiveForm', array(
                         'id' => 'signup-form',
                         'action' => Yii::app()->createUrl('/myproject/signupform/signup'), // Specify the action here
-                        'enableClientValidation' => true,
+                        // 'enableClientValidation' => true,
                         'clientOptions' => array(
                             'validateOnSubmit' => true,
                         ),

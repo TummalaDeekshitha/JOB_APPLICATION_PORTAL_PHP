@@ -15,11 +15,11 @@ class MailHelper
             $mail->isSMTP();
             $mail->Host ='smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = '20311a1206@sreenidhi.edu.in'; // SMTP username
-            $mail->Password = '20311A1206'; // SMTP password
+            $mail->Username = Yii::app()->params["email"]; // SMTP username
+            $mail->Password = Yii::app()->params["password"] ; // SMTP password
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587;
-            $mail->setFrom("20311A1206@sreenidhi.edu.in");
+            $mail->setFrom(Yii::app()->params["email"]);
             
             $mail->addAddress($to);
             // $mail->addAttachments('/path')

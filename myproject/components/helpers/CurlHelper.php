@@ -1,5 +1,5 @@
 <?php
-class CurlHelper extends CComponent {
+class CurlHelper {
 
     public static function curl($url, $method, $parameters = [], $authorization_token = null, $headers = [], $content_type = 'application/x-www-form-urlencoded')
     {

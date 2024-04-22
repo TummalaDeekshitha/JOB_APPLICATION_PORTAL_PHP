@@ -24,6 +24,7 @@ class ApplicationCollection extends EMongoDocument {
         array('email', 'MyCustomValidator'), 
         array('phoneno', 'match', 'pattern' => '/^\d{10}$/', 'message' => 'Phone number must be 10 digits.'),
         array('email', 'email'),
+        // array('resume','file','extensions'=>'jpg,pdf,jpeg','message'=>"only PDF,JPG,JPEG files are allowed"),
         array('appliedDate', 'default', 'value' => new MongoDate(time())),
     );
 }

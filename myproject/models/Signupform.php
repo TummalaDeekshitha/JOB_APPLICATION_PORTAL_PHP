@@ -10,7 +10,7 @@ class Signupform extends CFormModel
         return array(
             array('name, email, password', 'required'),
             array('name, email, password, _id', 'safe'),
-            array('email', 'email'), // Ensure that the email is a valid email address format
+            array('email', 'email'),
             array('email', 'uniqueEmail'), // Ensure email is unique
             array(
                 'password', 'match',  'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/',

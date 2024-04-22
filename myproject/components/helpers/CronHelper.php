@@ -1,6 +1,12 @@
 <?php
 
 
+<<<<<<< HEAD
+=======
+
+// require_once('/data/live/protected/modules/myproject/components/helpers/MailHelper.php');
+
+>>>>>>> 1a22e9c10723038f136d45dbead9cd74e17b55a3
 class CronHelper
 {
     public static function availabilityCheck()

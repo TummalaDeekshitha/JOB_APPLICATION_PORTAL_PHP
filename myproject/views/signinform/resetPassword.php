@@ -2,11 +2,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <!-- Image -->
                 <img src="/images/signupact.jpeg" alt="Signup Image" class="img-fluid">
             </div>
-            <div class="col-md-6 form-container">
+            <div class="col-md-7 ">
                 <!-- Sign In Form -->
                 <div class="form-container ">
                     <h2>Reset Your Password</h2>
@@ -24,12 +24,12 @@
 
 <div class="form-container sign-in-container">
 		<!-- <form action="#"> -->
-			<div class="row">
+			<div class="row m-8" style="margin-bottom: 15px;">
     <?php echo $form->labelEx($model, 'newPassword', ); ?>
     <?php echo $form->passwordField($model, 'newPassword',array('class' => 'input')); ?>
     <?php echo $form->error($model, 'newPassword', ); ?>
 </div>
-<div class="row">
+<div class="row m-8">
     <?php echo $form->labelEx($model, 'confirmPassword', ); ?>
     <?php echo $form->passwordField($model, 'confirmPassword',array('class' => 'input')); ?>
     <?php echo $form->error($model, 'confirmPassword', ); ?>

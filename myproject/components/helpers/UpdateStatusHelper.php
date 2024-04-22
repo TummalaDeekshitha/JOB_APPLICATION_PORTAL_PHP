@@ -1,5 +1,5 @@
 <?php
-class UpdateStatusHelper extends CComponent
+class UpdateStatusHelper 
 {
 public static function UpdateStatus()
 {

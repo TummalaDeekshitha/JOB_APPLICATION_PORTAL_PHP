@@ -1,13 +1,13 @@
 <?php
-class SignupHelper extends CComponent {
+class SignupHelper {
 
     public static function Signup($model, $test = false){
 
     if ($test || $model->validate()) {
         $model2=new Signupcolls();
         $model2->name=$model->name;
-        $model2->email=$model->email;
-        $model2->password=password_hash($model->password, PASSWORD_DEFAULT);
+        $model2->email=strToLower($model->email);
+        $model2->password=$model->password;
         if($model2->save()){
          return true;
         }

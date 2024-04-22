@@ -53,6 +53,20 @@
       height: 100%;
       
     }
+    header div a {
+  display: inline-block;
+  padding: 5px 5px;
+  margin: 5px;
+  color: white;
+  text-decoration: none;
+  
+  border: none;
+  border-radius: 3px;
+}
+
+header div a:hover {
+  background-color: crimson; /* Hover color */
+}
   </style>
 </head>
 

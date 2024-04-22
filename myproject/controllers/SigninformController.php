@@ -1,19 +1,12 @@
 <?php
 
-use app\helpers\Mailhelper;
-require_once "/data/live/protected/modules/myproject/components/helpers/Mailhelper.php";
 class SigninformController extends Controller{
    public $layout='signinsignuplayout';
     
     public function actionIndex()
     {
 
-      // $result=Yii::app()->cache->executeCommand('hset',['test','key1','v1']);
-      //   $result=Yii::app()->cache->executeCommand('hgetall',['test']);
-      // $session = Yii::app()->session;
-      //   $session->open();
-      //   $session['name1'] = 'testsession';
-        
+      
         $model=new Signinform();
        $this->render('signin',array('model'=>$model,"message"=>" "));
     }
@@ -31,10 +24,13 @@ class SigninformController extends Controller{
             {  
               $payload = array('email' => $model->email,'role'=>"user");
               $token = Yii::app()->jwt->encode($payload);
-             
-              $session = Yii::app()->session;
-              $session->open();
-              Yii::app()->session["jwtToken"]=$token;
+          // Yii::app()->session["jwtToken"]=$token;`````````````````````````````````````````````````````````````````````````````````````````````````````````
+          $cookie = new CHttpCookie('jwtToken', $token);
+          $cookie->expire = time() + 3600;
+         
+          Yii::app()->request->cookies['jwtToken'] = $cookie;
+          
+          
       
             
              $this->redirect("/myproject/about");
@@ -69,7 +65,7 @@ class SigninformController extends Controller{
               $user = Signupcolls::model()->findByAttributes(['email' =>strtolower( $model->email)]);
 
               if ($user !== null) {
-                 $otp=OtpHelper::sendOtp();
+                 $otp=OtpHelper::sendOtp($model->email);
                  if(MailHelper::sendMail($model->email,"OTP","OTP is $otp"))
                  {  
                   Yii::app()->session["reset_password_email"]=$model->email;
@@ -85,7 +81,7 @@ class SigninformController extends Controller{
                  }
                 }
                 else {
-                  $model2=new Signupform();
+                  $model2=new Signupcolls();
                    $this->render("signupform",array('model'=>$model,'message'=>"You Don't have account please do signup"));
                    return;
                  }
@@ -108,7 +104,8 @@ class SigninformController extends Controller{
      if(isset($_POST["otp"]))
      {
       $userotp=$_POST["otp"];
-      $otp=OtpHelper::verifyOtp($userotp);
+      $email=Yii::app()->session["reset_password_email"];
+      $otp=OtpHelper::verifyOtp($email,$userotp);
       if($otp==1)
       {
         $model=new ResetPasswordForm();

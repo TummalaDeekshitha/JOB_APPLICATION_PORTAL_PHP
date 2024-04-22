@@ -26,14 +26,14 @@
                     )); ?>
                      
 
-                    <div class="mb-3">
+                    <div class="mb-3" style="margin-bottom: 15px;">
                             <?php echo $form->labelEx($model, 'email', array('class' => 'form-label')); ?>
                             <?php echo $form->emailField($model, 'email', array('class' => 'form-control')); ?>
                             <?php echo $form->error($model, 'email', array('class' => 'text-danger')); ?>
                         </div>
 
-                        <div class="text-center">
-                            <?php echo CHtml::submitButton('Send OTP', array('class' => 'btn btn-primary')); ?>
+                        <div class="text-center m-5">
+                            <?php echo CHtml::submitButton('Send OTP', array('class' => 'btn btn-primary m-5')); ?>
                         </div>
 
                         <?php $this->endWidget(); ?>

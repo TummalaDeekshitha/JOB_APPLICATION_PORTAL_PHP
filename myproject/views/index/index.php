@@ -31,7 +31,7 @@
       <div class="container-fluid ">
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <a class="navbar-brand" >
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>images/logo.png" alt="" />
+            <img src="../../../../../images/logo.png" alt="" />
             <span>
              JobForge
             </span>
@@ -481,15 +481,7 @@ SignIn
 
   
   <!-- end  footer section -->
-  <script>
-     const handleAboutClick = () => {
-       window.location.href="/about"
-        }; 
-    const handlesigninClick = () => {
-       window.location.href="/signinhandle"
-       
-     }; 
-   </script>
+ 
 
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-3.4.1.min.js"></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js"></script>

@@ -1,28 +1,29 @@
 <?php
-class AboutHelper extends CComponent {
+class AboutHelper {
     public static function addUserTrack($jobid, $useremail)
     {
        
         
-        $existingModel = UserTracking::model()->findByAttributes(['email' => $useremail,'jobid'=>$jobid]);
+        $existingModel = UserTracking::model()->findByAttributes(['email' => $useremail,'jobid'=>new \MongoDB\BSON\ObjectId ($jobid)]);
         $model = new UserTracking();
         $model->email = $useremail;
         if ($existingModel == null) {
             
-            $job=Jobs::model()->findByPk($jobid);
+            $job=Jobs::model()->findByPk(new \MongoDB\BSON\ObjectId ($jobid));
         
-            $model->jobid= $jobid;
+            $model->jobid= new \MongoDB\BSON\ObjectId ($jobid);
             $model->jobName=$job->jobTitle;
             $model->category=$job->category;
             $model->companyName=$job->companyName;
             $model->location=$job->details->location;
+            
             if ($model->save()!=Null) {
                 return true;
             } 
         }
         return false;
     }
-
+   
     
     public static function jobs($company=Null,$job=Null,$location=Null,$salary=Null,$category=NUll)
     {
@@ -66,7 +67,8 @@ class AboutHelper extends CComponent {
     }
     public static function applicationDetails($jobId)
     {
-     $application=Jobs::model()->findByAttributes(array("_id"=> new \MongoDB\BSON\ObjectId($jobId)));
+       
+     $application=Jobs::model()->findByAttributes(array("_id"=> new MongoDB\BSON\ObjectId ($jobId)));
      
      $application= $application->getAttributes();
      $application['lastDate'] = date('Y-m-d', $application['lastDate']->sec);
