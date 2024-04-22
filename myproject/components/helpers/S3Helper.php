@@ -16,11 +16,8 @@ class S3Helper{
         );
     }
 
-    public function upload($tempFilePath, $contentType = null) {
-        $fileNameCmps = explode(".", $tempFilePath);
-        $fileExtension = strtolower(end($fileNameCmps));
-        $newFileName = md5(time() . $tempFilePath) . '.' . $fileExtension;
-
+    public function upload($tempFilePath, $contentType = null,$newFileName) {
+        
         $params = [
             'Bucket' => $_ENV['AWS_BUCKET_NAME'],
             'Key'    => $newFileName,

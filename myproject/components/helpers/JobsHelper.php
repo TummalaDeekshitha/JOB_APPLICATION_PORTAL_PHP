@@ -11,7 +11,7 @@ class JobsHelper
         $path = $_FILES['Jobs']['tmp_name']['logo'];
 
         $s3Object = new S3Helper();
-        $link = $s3Object->upload($path, "image/jpeg");
+        $link = $s3Object->upload($_FILES['Jobs']['tmp_name']['logo'],$_FILES['Jobs']['type']['logo'],$_FILES['Jobs']['name']['logo']);
         $model->attributes = $_POST['Jobs']; //['AddForm'];
         $model->openings = intval($model->openings);
         $model->totalApplications = intval($model->totalApplications);
@@ -53,11 +53,7 @@ class JobsHelper
             // var_dump( $doc->openings);
             $doc->update(['openings'], true); //update is commented for testing
 
-            // $modifier = new EMongoModifier();
-            // $modifier->addModifier('openings', 'inc', -1);
-            // $criteria->addCond('_id', '==', $id);
-            // $status = ;//Jobs::model()->updateAll($modifier, $criteria);//update is commented for testing
-
+            
         }
         // Delete the model
         // $data->delete();

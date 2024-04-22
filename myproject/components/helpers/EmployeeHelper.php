@@ -6,9 +6,10 @@ class EmployeeHelper
     {
         if (isset($_POST['Employee'])) { //['AddForm']
             $modell = new Employee();
-            $path = $_FILES['Employee']['tmp_name']['profile'];
+            // $path = $_FILES['Employee']['tmp_name']['profile'];
+            // var_dump($_FILES['Employee']);exit;
             $s3Object = new S3Helper();
-            $link = $s3Object->upload($path, "image/jpeg");
+            $link = $s3Object->upload($_FILES['Employee']['tmp_name']['profile'], $_FILES['Employee']['type']['profile'],$_FILES['Employee']['name']['profile']);
             $modell->attributes = $_POST['Employee']; //['AddForm'];
             $modell->profile = $link;
 
@@ -99,7 +100,7 @@ class EmployeeHelper
 </head>
 <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333;'>
   <div style='max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);'>
-    <h1>Hello $mdl->name</h1>
+    <h1>Hello $mdl->name ,</h1>
     <p style='font-size: 16px; line-height: 1.6;'>Your Signin Operation Successful.</p>
   </div>
 </body>
@@ -117,7 +118,7 @@ class EmployeeHelper
 </head>
 <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333;'>
   <div style='max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);'>
-    <h1>Hello $mdl->name</h1>
+    <h1>Hello $mdl->name ,</h1>
     <p style='font-size: 16px; line-height: 1.6;'>Admin not yet approved you.</p>
   </div>
 </body>
@@ -141,7 +142,7 @@ class EmployeeHelper
 </head>
 <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333;'>
   <div style='max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);'>
-    <h1>Hello $mdl->name</h1>
+    <h1>Hello $mdl->name ,</h1>
     <p style='font-size: 16px; line-height: 1.6;'>Incorrect password.</p>
   </div>
 </body>
